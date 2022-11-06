@@ -60,6 +60,8 @@ public class CatTest {
     public void setBirthDateTest() {
 
         Date givenBirthDate = new Date();
+        System.out.println(givenBirthDate);
+
         Date yesterdayDate = new Date(givenBirthDate.getTime() - (1000 * 60 * 60 * 24));
         Integer givenId = 0;
 
@@ -74,10 +76,12 @@ public class CatTest {
         Date givenBirthDate = new Date();
         Integer givenId = 0;
 
-        Cat cat = new Cat("Tom", givenBirthDate, givenId);
-        String sound = "meow!";
 
-        Assert.assertEquals(sound, cat.speak());
+        Cat cat = new Cat("Tom", givenBirthDate, givenId);
+     //   String sound = "meow!";
+     //   String sound1 = cat.speak();
+
+        Assert.assertEquals("meow!", cat.speak());
     }
     //tests for `void eat(Food food)`
     @Test
@@ -87,9 +91,10 @@ public class CatTest {
         Integer givenId = 0;
 
         Cat cat = new Cat("Tom", givenBirthDate, givenId);
-        Food chowfood = new Food();
-        cat.eat(chowfood);
-        cat.eat(chowfood);
+        Food chowfood1= new Food();
+        Food chowfood2 = new Food();
+        cat.eat(chowfood1);
+        cat.eat(chowfood2);
         int expected = 2;
         int actual = cat.getNumberOfMealsEaten();
         Assert.assertEquals(expected, actual);
@@ -100,25 +105,32 @@ public class CatTest {
         Date givenBirthDate = new Date();
         Integer givenId = 0;
 
-        Cat Cat = new Cat("Tillu", new Date(), 1);
+        Cat cat = new Cat("Tillu", new Date(), 1);
         boolean actual = false;
-        if (Cat instanceof Animal) {
+        boolean expected =true;
+        if(cat instanceof Animal){
             actual = true;
         }
-        Assert.assertTrue(actual);
+
+        // System.out.println(actual);
+      // Assert.assertTrue(actual);
+        //Assert.assertTrue(cat instanceof Animal);
+          Assert.assertEquals(expected,actual);
     }
+
     @Test
     public void mammalInheritanceTest(){
         String givenName = "Zula";
         Date givenBirthDate = new Date();
         Integer givenId = 0;
 
-        Cat Cat=new Cat("Tina",new Date(),1);
+        Cat cat=new Cat("Tina",new Date(),1);
         boolean actual=false;
-        if(Cat instanceof Mammal){
+        boolean expected = true;
+        if(cat instanceof Mammal){
             actual=true;
         }
-        Assert.assertTrue(actual);
+        Assert.assertEquals(expected,actual);
     }
 }
 
